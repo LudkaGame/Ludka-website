@@ -1,19 +1,8 @@
-### BUILD
-FROM node:18-alpine as build
+FROM node:18-alpine
 
 WORKDIR /app
 
-RUN npm run build
-COPY ./frontend/package*.json ./
+COPY ./frontend/. .
 RUN npm install
-COPY ./frontend/.output .
-RUN node server/index.mjs
-### BUILD
-
-
-### PROD
-FROM nginx as prod
-RUN mkdir /app
-COPY --from=build /app /app
-COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
-### PROD
+RUN npm run build
+ENTRYPOINT ["node", ".output/server/index.mjs"]
