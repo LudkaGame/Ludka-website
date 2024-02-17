@@ -59,4 +59,30 @@
         }
     }
 }
+
+@media screen and (max-width: 950px) {
+    .app-welcome {
+        &__container {
+            width: 100%;
+            text-align: center;
+        }
+
+        &__title,
+        &__subtitle {
+            max-width: none;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .app-welcome {
+        &__title {
+            font-size: 30px;
+            line-height: 34px;
+        }
+        &__subtitle {
+            font-size: 1.2rem;
+        }
+    }
+}
 </style>

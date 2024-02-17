@@ -57,4 +57,19 @@ const socials = ref([
         }
     }
 }
+
+@media screen and (max-width: 950px) {
+    .app-socials {
+        align-content: center;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .app-socials {
+        &__join {
+            font-size: 1rem;
+        }
+    }
+}
 </style>
