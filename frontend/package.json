@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@web3modal/ethers": "^4.0.5",
     "bulma": "^0.9.4",
+    "ethers": "^6.11.1",
     "nuxt": "^3.10.1",
     "sass": "^1.70.0",
     "vue": "^3.4.15",

@@ -41,6 +41,8 @@
 
         & > div {
             position: relative;
+            box-sizing: border-box;
+            padding: 16px 12px;
             background: rgba(3, 21, 19, 0.5);
             border-radius: 18px;
             border: 1px solid rgba(#40e0d0, 0.3);

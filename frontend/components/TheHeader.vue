@@ -9,11 +9,11 @@
                 Ludka
             </h1>
         </div>
+        <w3m-button />
     </header>
 </template>
 
 <script setup>
-    
 </script>
 
 <style lang="scss" scoped>
