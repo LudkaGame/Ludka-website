@@ -9,7 +9,6 @@
                 Ludka
             </h1>
         </div>
-        <w3m-button />
     </header>
 </template>
 

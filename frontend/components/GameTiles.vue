@@ -2,7 +2,9 @@
     <div class="tiles-container">
         <div class="tiles-container__chain">qq</div>
         <div class="tiles-container__enter"></div>
-        <div class="tiles-container__game"></div>
+        <div class="tiles-container__game">
+            <w3m-button />
+        </div>
         <div class="tiles-container__info">
             <GameTilesInfo />
         </div>
