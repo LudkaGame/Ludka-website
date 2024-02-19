@@ -4,6 +4,5 @@ WORKDIR /app
 
 COPY ./frontend/. .
 RUN npm install
-ENV NODE_ENV=production
-RUN npm run build
+RUN npm ci --only=production
 ENTRYPOINT ["node", ".output/server/index.mjs"]
