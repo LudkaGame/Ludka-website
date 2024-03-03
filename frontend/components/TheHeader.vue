@@ -13,6 +13,18 @@
 </template>
 
 <script setup>
+import { ethers } from 'ethers';
+// const hre = require('hardhat');
+// const ethers = hre.ethers;
+// let provider;
+let signer = null;
+onMounted(async() => {
+    // const [signer] = ethers.getSigners()
+    console.log(window.ethereum)
+    const provider = new ethers.BrowserProvider(window.ethereum)
+    console.log(provider)
+    signer = await provider.getSigner()
+})
 </script>
 
 <style lang="scss" scoped>

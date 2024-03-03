@@ -6,39 +6,39 @@
 </template>
 
 <script setup>
- import { createWeb3Modal, defaultConfig } from '@web3modal/ethers/vue'
+//  import { createWeb3Modal, defaultConfig } from '@web3modal/ethers/vue'
 
-// 1. Get projectId at https://cloud.walletconnect.com
-const projectId = 'eb01c9794c2c1f65cc2d6c39506409e7'
+// // 1. Get projectId at https://cloud.walletconnect.com
+// const projectId = 'eb01c9794c2c1f65cc2d6c39506409e7'
 
-// 2. Set chains
-const mainnet = {
-  chainId: 1,
-  name: 'Ethereum',
-  currency: 'ETH',
-  explorerUrl: 'https://etherscan.io',
-  rpcUrl: 'https://cloudflare-eth.com'
-}
+// // 2. Set chains
+// const mainnet = {
+//   chainId: 1,
+//   name: 'Ethereum',
+//   currency: 'ETH',
+//   explorerUrl: 'https://etherscan.io',
+//   rpcUrl: 'https://cloudflare-eth.com'
+// }
 
-// 3. Create modal
-const metadata = {
-  name: 'My Website',
-  description: 'My Website description',
-  url: 'https://mywebsite.com', // origin must match your domain & subdomain
-  icons: ['https://avatars.mywebsite.com/']
-}
+// // 3. Create modal
+// const metadata = {
+//   name: 'My Website',
+//   description: 'My Website description',
+//   url: 'https://mywebsite.com', // origin must match your domain & subdomain
+//   icons: ['https://avatars.mywebsite.com/']
+// }
 
-createWeb3Modal({
-  ethersConfig: defaultConfig({
-    metadata,
-    defaultChainId: 1,
-    enableEIP6963: true,
-    enableInjected: true,
-    enableCoinbase: true,
-  }),
-  chains: [mainnet],
-  projectId,
-})
+// createWeb3Modal({
+//   ethersConfig: defaultConfig({
+//     metadata,
+//     defaultChainId: 1,
+//     enableEIP6963: true,
+//     enableInjected: true,
+//     enableCoinbase: true,
+//   }),
+//   chains: [mainnet],
+//   projectId,
+// })
 </script>
 
 <style lang="scss">

@@ -3,7 +3,8 @@
         <div class="tiles-container__chain">qq</div>
         <div class="tiles-container__enter"></div>
         <div class="tiles-container__game">
-            <w3m-button />
+            <!-- <w3m-button /> -->
+            <ConnectWallet/>
         </div>
         <div class="tiles-container__info">
             <GameTilesInfo />
