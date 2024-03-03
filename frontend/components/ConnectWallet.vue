@@ -18,6 +18,11 @@
            </p> 
            <button @click="deposit()">deposit</button>
            <button @click="drawWinner()">draw winner</button>
+           <div>
+            <input type="text" v-model="sequence" placeholder="sequence number">
+            <button @click="getProviderRandom()">get provider random</button>
+            <div v-if="uriResult != ''">Provider random number: {{ '0x' + uriResult.data.value.data }}</div>
+           </div>
         </div>
         <div v-if="transactionError">
             {{ getRpcErrorMessage(transactionError) }}
@@ -59,15 +64,20 @@ import { Web3 } from 'web3';
 import { abi } from '../../out/Ludka.sol/Ludka.json';
 import axios from 'axios'; 
 
-const NETWORK_ID = '0xa0c71fd';
-const CONTRACT_ADDRESS = '0x2A50a2Fa188805CDE50c9369e0Ae682FF24c0c85';
-// const CONTRACT_ADDRESS = '0x0355b7b8cb128fa5692729ab3aaa199c1753f726';
+// const NETWORK_ID = '0xa0c71fd';
+const NETWORK_ID = '0x539';
+// const CONTRACT_ADDRESS = '0x2A50a2Fa188805CDE50c9369e0Ae682FF24c0c85';
+const CONTRACT_ADDRESS = '0x0355b7b8cb128fa5692729ab3aaa199c1753f726';
 const isMetamaskSupported = ref(false);
 const account = ref(null);
 const networkError = ref(undefined);
 const transactionError = ref(undefined);
 const txBeingSent = ref(undefined);
 const currentBalance = ref(undefined);
+
+const sequence = ref('');
+const uriResult = ref('');
+
 // const random = ref ({
 //     number: null,
 //     commitment: null
@@ -100,6 +110,12 @@ onMounted(() => {
     isMetamaskSupported.value = typeof window.ethereum !== "undefined";
 });
 
+const getProviderRandom = async () => {
+    uriResult.value = await axios.get(`${pythProviderUri}/revelations/${sequence.value}`)
+    console.log(uriResult.value.data.value.data)
+    console.log(sequence.value)
+};
+
 watch([currentConnection, txBeingSent], 
     async () => {
         if (provider && signer) {
@@ -116,10 +132,9 @@ async function connectWallet() {
         return
     }
 
-    if(!(await checkNetwork())) {
-        return
-    }
-
+    // if(!(await checkNetwork())) {
+    //     return
+    // }
     const [selectedAcc] = await window.ethereum.request(
         { method: "eth_requestAccounts" }
     )
@@ -212,11 +227,11 @@ const deposit = async () => {
         txBeingSent.value = random;
         const signerContract = new ethers.Contract(CONTRACT_ADDRESS, JSON.stringify(abi), signer);
         const deposit = await signerContract.deposit(
-            3,
+            1,
             // random,
             // ethers.ZeroHash,
             // ethers.ZeroHash,
-            { value: ethers.parseEther('0.000000002') }
+            { value: ethers.parseEther('0.0002') }
         ) 
         // const signerContract = new ethers.Contract(CONTRACT_ADDRESS, abi, currentConnection.value.signer)
         // const deposit = await signerContract.deposit(1, [], ethers.keccak256(web3.utils.randomHex(32)), 0, ethers.ZeroHash, ethers.ZeroHash, {value: ethers.parseEther('0.0002')}) 
